@@ -784,6 +784,7 @@ func moveSet(set string) error {
 			for _, val := range arrval {
 				valstr := string(val.([]byte))
 				//add all members of set to destination
+				log.Println("SADD", set, valstr)
 				_, err := destConn.Do("SADD", set, valstr)
 				if err != nil {
 					return errors.New("err when set on hexist : keys exist as different type : " + err.Error())
